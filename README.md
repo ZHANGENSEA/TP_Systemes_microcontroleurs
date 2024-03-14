@@ -62,7 +62,61 @@ SOT-223 (Small Outline Transistor-223) : C'est un type de boîtier pour les comp
 
 SOIC (Small Outline Integrated Circuit) : C'est un type de boîtier à montage en surface utilisé pour les circuits intégrés. Il a des broches sur les deux côtés et est plus étroit que le boîtier DIP (Dual In-line Package) traditionnel. 
 
+3.1.4 Que signifie __STATIC_INLINE ?
+
+Réponse :
+
+__STATIC_INLINE permet d'indiquer au compilateur de remplacer les appels de la fonction par le contenu de la fonction (similaire à une fonction macro)
+
+3.1.5 Et pourquoi y a-t-il du code dans un .h alors que Môssieur Fiack vous a expres-
+sément demandé de pas le faire ? (Les deux questions sont peut-être liés, va
+savoir)
+
+Réponse : Si c'est une fonction INLINE dans un header, elle est copiée dans le fichier source.
+
+3.2.2 
+
+Quelle valeur donner au prescaler ?
+
+Réponse :
+
+On donne 64 au prescaler car 16 Mhz/64 = 250 kHz. On obtient une période de 255 pour le compteur du timer et 1 khz pour le PWR.
+
 3.3.3 Quelles sont les valeurs de PSC et de ARR ?
-Réponse : On sait que la fréquence du processeur est de 16 MHz. Et on souhaite un timer qui déclenche une interruption toutes les milli-secondes, donc avec une fréquence de 1 khz. On règle donc le PSC à 250 et l'ARR à 64 pour avoir 1 kHz.
+
+Réponse : 
+
+On sait que la fréquence du processeur est de 16 MHz. Et on souhaite un timer qui déclenche une interruption toutes les milli-secondes, donc avec une fréquence de 1 khz. On règle donc le PSC à 250 et l'ARR à 64 pour avoir 1 kHz.
+
+3.3.6 Où se situe la routine de service d’interruption ?
+
+Réponse :
+
+Elle se situe dans "stm3210xx_it.c"
+
+3.3.7 Que manque-t-il par rapport au code généré par la HAL ?
+
+Réponse:
+
+La désactivation du flag d'interruption
+
+3.3.8 En quoi est-ce catastrophique ?
+
+Réponse :
+
+L'interruption va être lancée en boucle
+
+3.3.9 Que faire ?
+
+Réponse :
+
+Ecrire le flag dans la routine d'interruption
+
+3.4.5 Une erreur s’est glissée dans le code précédent, saurez-vous la retrouver ?
+
+Réponse : 
+
+Il faut rajouter un & dans la ligne SerialTransmit(&ch,1);
+Il est nécessaire de passer un pointeur sur le char.
 
 
