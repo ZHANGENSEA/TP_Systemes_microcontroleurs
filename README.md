@@ -1,5 +1,10 @@
 # TP_Systemes_microcontroleurs
 
+1.1.6 Activez l’USART2 en mode Asynchrone. Gardez les paramètres par défaut, et
+notez le baud rate.
+
+Réponse : 115200 BITS/S
+
 1.2.13 Pourquoi PB9 est relié à la masse ? 
 
 Réponse : 
